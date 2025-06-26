@@ -2,24 +2,24 @@
   "posts": [
     {
       "id": "1",
-      "title": "Welcome to Post Pulse",
+      "title": "Welcome to The Blog",
       "author": "Admin",
       "content": "This is your first post. Feel free to explore, edit, or delete it!",
-      "image": "https://via.placeholder.com/400x200?text=Welcome"
+      "image": ""
     },
     {
       "id": "2",
       "title": "The Joy of JavaScript",
       "author": "Kimari",
       "content": "JavaScript lets you build interactive websites with ease. Let's keep coding!",
-      "image": "https://via.placeholder.com/400x200?text=JavaScript"
+      "image": ""
     },
     {
       "id": "3",
       "title": "CSS is Style",
       "author": "Brilliant",
       "content": "CSS gives life to your HTML. Colors, layouts, and animations await you.",
-      "image": "https://via.placeholder.com/400x200?text=CSS+Magic"
+      "image": ""
     },
     {
       "id": "4079",
