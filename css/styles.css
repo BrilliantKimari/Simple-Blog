@@ -1,0 +1,143 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  padding: 2rem;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.sidebar {
+  width: 35%;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#post-detail {
+  flex: 1;
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+}
+
+/* Post list */
+#post-list > div {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+#post-list h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  color: #3498db;
+}
+
+#post-list h3:hover {
+  text-decoration: underline;
+}
+
+#post-list img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 5px;
+}
+
+/* Form styling */
+form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form input,
+form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  background-color: #2ecc71;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+form button:hover {
+  background-color: #27ae60;
+}
+
+/* Detail section */
+#post-detail img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+#post-detail button {
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#post-detail button:nth-child(5) {
+  background-color: #f39c12;
+  color: white;
+}
+
+#post-detail button:nth-child(6) {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#post-detail button:hover {
+  opacity: 0.9;
+}
+
+/* Edit form inside post detail */
+#edit-form-container {
+  margin-top: 1rem;
+}
+
+#edit-form-container form {
+  margin-top: 1rem;
+  background-color: #fafafa;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
