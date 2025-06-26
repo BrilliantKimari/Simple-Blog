@@ -7,15 +7,15 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #fdfdfb; /* off-white */
   padding: 2rem;
-  color: #333;
+  color: #2e2e2e;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #2c3e50;
+  color: #34495e;
 }
 
 /* Layout */
@@ -28,25 +28,25 @@ h1 {
 
 .sidebar {
   width: 35%;
-  background: #ffffff;
+  background: #fefefe; /* soft white */
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 #post-detail {
   flex: 1;
-  background: #ffffff;
+  background: #fefefe;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   min-height: 200px;
 }
 
 /* Post list */
 #post-list > div {
   margin-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
 }
 
@@ -54,7 +54,7 @@ h1 {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
-  color: #3498db;
+  color: #2d89ef; /* soft blue */
 }
 
 #post-list h3:hover {
@@ -79,12 +79,13 @@ form input,
 form textarea {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #cfcfcf;
   border-radius: 6px;
+  background-color: #f9f9f9;
 }
 
 form button {
-  background-color: #2ecc71;
+  background-color: #27ae60;
   color: white;
   font-weight: bold;
   border: none;
@@ -95,7 +96,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #27ae60;
+  background-color: #219150;
 }
 
 /* Detail section */
@@ -116,8 +117,8 @@ form button:hover {
 }
 
 #post-detail button:nth-child(5) {
-  background-color: #f39c12;
-  color: white;
+  background-color: #f1c40f;
+  color: #fff;
 }
 
 #post-detail button:nth-child(6) {
@@ -136,7 +137,7 @@ form button:hover {
 
 #edit-form-container form {
   margin-top: 1rem;
-  background-color: #fafafa;
+  background-color: #fcfcfc;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
