@@ -57,6 +57,11 @@ h1 {
   color: #2d89ef; /* soft blue */
 }
 
+#post-list h3:focus {
+  outline: 2px solid #2d89ef;
+  outline-offset: 2px;
+}
+
 #post-list h3:hover {
   text-decoration: underline;
 }

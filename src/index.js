@@ -1,9 +1,11 @@
 const URL = "http://localhost:3000/posts";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", main);
+
+function main() {
   displayPosts();
-  document.getElementById("new-post-form").addEventListener("submit", addPost);
-});
+  addNewPostListener();
+}
 
 function displayPosts() {
   fetch(URL)
@@ -11,13 +13,22 @@ function displayPosts() {
     .then(posts => {
       const list = document.getElementById("post-list");
       list.innerHTML = "";
+      if (posts.length === 0) {
+        document.getElementById("post-detail").innerHTML = `<p style="color:#888;text-align:center;">No posts available. Add a new post!</p>`;
+        return;
+      }
       posts.forEach(p => {
         const div = document.createElement("div");
-        div.innerHTML = `<h3 data-id="${p.id}">${p.title}</h3><p>By ${p.author}</p>${p.image ? `<img src="${p.image}"/>` : ""}`;
-        div.querySelector("h3").onclick = () => showPost(p.id);
+        div.innerHTML = `<h3 tabindex="0" data-id="${p.id}">${p.title}</h3><p>By ${p.author}</p>${p.image ? `<img src="${p.image}" alt="Post image"/>` : ""}`;
+        const h3 = div.querySelector("h3");
+        h3.onclick = () => showPost(p.id);
+        h3.onkeydown = e => { if (e.key === "Enter" || e.key === " ") showPost(p.id); };
         list.appendChild(div);
       });
-      if (posts.length) showPost(posts[0].id);
+      showPost(posts[0].id);
+    })
+    .catch(() => {
+      document.getElementById("post-list").innerHTML = `<p style="color:red;">Failed to load posts.</p>`;
     });
 }
 
@@ -29,13 +40,20 @@ function showPost(id) {
       d.innerHTML = `
         <h2>${p.title}</h2>
         <p><strong>Author:</strong> ${p.author}</p>
-        ${p.image ? `<img src="${p.image}" />` : ""}
+        ${p.image ? `<img src="${p.image}" alt="Post image" />` : ""}
         <p>${p.content}</p>
-        <button onclick="editForm(${p.id}, '${escape(p.title)}', \`${escape(p.content)}\`)">Edit</button>
-        <button onclick="deletePost(${p.id})">Delete</button>
+        <button onclick="window.editForm(${p.id}, '${escape(p.title)}', \`${escape(p.content)}\`)">Edit</button>
+        <button onclick="window.deletePost(${p.id})">Delete</button>
         <div id="edit-form-container"></div>
       `;
+    })
+    .catch(() => {
+      document.getElementById("post-detail").innerHTML = `<p style="color:red;">Failed to load post details.</p>`;
     });
+}
+
+function addNewPostListener() {
+  document.getElementById("new-post-form").addEventListener("submit", addPost);
 }
 
 function addPost(e) {
@@ -51,19 +69,23 @@ function addPost(e) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(post)
-  }).then(() => {
-    f.reset();
-    displayPosts();
-  });
+  })
+    .then(() => {
+      f.reset();
+      displayPosts();
+    })
+    .catch(() => alert("Failed to add post."));
 }
 
-function deletePost(id) {
+window.deletePost = function(id) {
   if (confirm("Delete this post?")) {
-    fetch(`${URL}/${id}`, { method: "DELETE" }).then(displayPosts);
+    fetch(`${URL}/${id}`, { method: "DELETE" })
+      .then(displayPosts)
+      .catch(() => alert("Failed to delete post."));
   }
-}
+};
 
-function editForm(id, title, content) {
+window.editForm = function(id, title, content) {
   const c = document.getElementById("edit-form-container");
   c.innerHTML = `
     <form id="edit-post-form">
@@ -83,9 +105,11 @@ function editForm(id, title, content) {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
-    }).then(displayPosts);
+    })
+      .then(displayPosts)
+      .catch(() => alert("Failed to update post."));
   };
-}
+};
 
 // Helper to escape backticks and quotes safely
 function escape(str) {
