@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>The Blog</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4dd.png" />
+</head>
+
+<body>
+    <h1><b>THE BLOG</b></h1>
+    <main class="container">
+        <aside class="sidebar">
+            <div id="post-list" aria-label="Blog post list"></div>
+            <form id="new-post-form" autocomplete="off">
+                <input name="title" placeholder="Title" required />
+                <input name="author" placeholder="Author" required />
+                <textarea name="content" placeholder="Content" required></textarea>
+                <input name="image" type="url" placeholder="Image URL" />
+                <button type="submit">Add Post</button>
+            </form>
+        </aside>
+        <section id="post-detail">
+            <p style="color: #888; text-align: center;">Select a post to see details.</p>
+        </section>
+    </main>
+    <script src="./src/index.js" defer></script>
+</body>
+
+</html>
